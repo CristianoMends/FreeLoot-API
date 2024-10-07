@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: ${URL}
+    username: ${USER}
+    password: ${PASS}
+    driver-class-name: org.postgresql.Driver
+
+    jpa:
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+        ddl-auto: update
