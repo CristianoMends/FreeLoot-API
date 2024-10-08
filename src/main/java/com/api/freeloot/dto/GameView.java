@@ -12,21 +12,14 @@ public class GameView {
     private String name;
     private String status;
     private String period;
-
+    private String description;
     private String link;
     private LocalDateTime updateDate;
 
-    public GameView(String image, String name, String status, String period, String link) {
+    public GameView(String image, String name, String description,String status, String period, String link, LocalDateTime updateDate) {
         this.image = image;
         this.name = name;
-        this.status = status;
-        this.period = period;
-        this.link = link;
-        updateDate = ZonedDateTime.now(ZoneId.of("America/Sao_Paulo")).toLocalDateTime();
-    }
-    public GameView(String image, String name, String status, String period, String link, LocalDateTime updateDate) {
-        this.image = image;
-        this.name = name;
+        this.description = description;
         this.status = status;
         this.period = period;
         this.link = link;
@@ -47,6 +40,14 @@ public class GameView {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getStatus() {
@@ -82,18 +83,7 @@ public class GameView {
     }
 
     public Game toEntity(){
-        return new Game(image, name, status, period, link, updateDate);
+        return new Game(image, name, description,status, period, link, updateDate);
     }
 
-    @Override
-    public String toString() {
-        return "GameEpicView{" +
-                "image='" + image + '\'' +
-                ", name='" + name + '\'' +
-                ", status='" + status + '\'' +
-                ", period='" + period + '\'' +
-                ", link='"+link+"'"+
-                ", updateDate=" + updateDate +
-                '}';
-    }
 }

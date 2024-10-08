@@ -11,4 +11,15 @@ public interface GameRepository extends JpaRepository<Game,Long> {
 
     List<Game> findByName(String name);
 
+    @Query(nativeQuery = true, value = "select * from game where period != 'Indeterminado' AND status = 'GRÁTIS'")
+    List<Game> findAllWeekly();
+
+    @Query(nativeQuery = true, value = "select * from game where status = 'ENCERRADO'")
+    List<Game> findAllExpired();
+
+    @Query(nativeQuery = true, value = "select * from game where period = 'Indeterminado'")
+    List<Game> getAllGamesAlwaysFree();
+
+    boolean existsByName(String name);
+
 }

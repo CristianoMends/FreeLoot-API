@@ -64,9 +64,12 @@ CREATE DATABASE freeloot_db;
 
 <h2 id="routes">📍 Endpoints da API</h2>
 
-| Route                   | Description                                                                         
-|-------------------------|-------------------------------------------------------------------------------------
-| <kbd>GET /api/all</kbd> | Lista todas os jogos encontrados e salvos.  
+| Route                  | Description                                                        
+|------------------------|--------------------------------------------------------------------
+| <kbd>GET api/always</kbd> | Lista os jogos salvos que são sempre grátis.                       |
+| <kbd>GET api/weekly</kbd> | Lista os jogos salvos que são grátis na semana.                    |
+| <kbd>GET api/expired</kbd> | Lista os jogos semanais salvos que já expiraram a semana gratuita. |
+
 
 ### RESPONSE
 
@@ -75,6 +78,7 @@ CREATE DATABASE freeloot_db;
   {
     "image": "https://imageurl",
     "name": "Game Name",
+    "description": "Game Description",
     "status": "GRÁTIS",
     "period": "Indeterminado",
     "link": "https://gamelink",

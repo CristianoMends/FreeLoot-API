@@ -5,6 +5,7 @@ import com.api.freeloot.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +18,21 @@ public class SearchController {
 
     @Autowired
     private SearchService searchService;
-    @GetMapping("all")
+    @GetMapping("always")
+    @CrossOrigin
     public ResponseEntity<List<GameView>> getAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(searchService.getAll());
+        return ResponseEntity.status(HttpStatus.OK).body(searchService.getAllGamesAlwaysFree());
+    }
+    @GetMapping("weekly")
+    @CrossOrigin
+    public ResponseEntity<List<GameView>> gelAllWeekly(){
+        return ResponseEntity.status(HttpStatus.OK).body(searchService.getAllWeeklyFree());
+    }
+
+    @GetMapping("expired")
+    @CrossOrigin
+    public ResponseEntity<List<GameView>> getAllExpired(){
+        return ResponseEntity.status(HttpStatus.OK).body(searchService.getAllExpired());
     }
 
 }
